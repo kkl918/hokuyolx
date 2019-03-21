@@ -29,7 +29,7 @@ class HokuyoLX(object):
     _logger = None #: Logger instance for performing logging operations
 
     def __init__(self, activate=True, info=True, tsync=True, addr=None,
-                 buf=512, timeout=5, time_tolerance=300, logger=None,
+                 buf=512, timeout=5, time_tolerance=300, logger=1,
                  convert_time=True):
         '''Creates new object for communications with the sensor.
 
