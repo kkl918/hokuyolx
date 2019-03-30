@@ -30,7 +30,7 @@ class HokuyoLX(object):
 
     def __init__(self, activate=True, info=True, tsync=True, addr=None,
                  buf=512, timeout=5, time_tolerance=300, logger=1,
-                 convert_time=True):
+                 convert_time=0):
         '''Creates new object for communications with the sensor.
 
         Parameters
@@ -237,6 +237,7 @@ class HokuyoLX(object):
     def _process_scan_data(self, data, with_intensity):
         '''Converts raw scan data into ndarray with neccecary shape'''
         raw_data = ''.join([self._check_sum(block) for block in data])
+        '''
         if len(raw_data) % 3 != 0:
             raise HokuyoException('Wrong length of scan data')
         scan = np.array([
@@ -244,7 +245,8 @@ class HokuyoLX(object):
             for i in range(len(raw_data)//3)], np.uint32)
         if with_intensity:
             return scan.reshape((len(scan)//2, 2))
-        return scan
+        '''        
+        return raw_data
 
     def _filter(self, scan, start=None, end=None, grouping=0,
                 dmin=None, dmax=None, imin=None, imax=None):

@@ -19,13 +19,13 @@ def update(laser, plot, text, log):
     #   0          1           2
     # angle    distance   intensities
     log.write(str(timestamp)+',')
-    '''
+    
     for distance    in scan[:,1]:        # write distance
         log.write(str(distance)+',')
     for intensities in scan[:,2]:        # write intensities
         log.write(str(intensities)+',')    
     log.write('\n')                      # chahge line   
-    '''
+    
     print(timestamp,len(scan[:,1]),len(scan[:,2]),scan[:,1][540],scan[:,2][540])
     plot.set_offsets(scan[:, :2])        # row all ,0-2 col 
     plot.set_array(scan[:, 2])           # row all ,2   col 
